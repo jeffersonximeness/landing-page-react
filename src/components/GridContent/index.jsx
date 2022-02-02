@@ -16,6 +16,7 @@ export const GridContent = ({ title, html, background = false }) => {
         <Heading
           uppercase
           colorDark={!background}
+          as="h2"
         >
           { title }
         </Heading>

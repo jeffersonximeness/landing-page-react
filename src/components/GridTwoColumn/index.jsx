@@ -15,6 +15,7 @@ export const GridTwoColum = ({ title, text, srcImg, background }) => {
           <Heading
             uppercase
             colorDark={!background}
+            as="h2"
           >
             { title }
           </Heading>
