@@ -1,4 +1,4 @@
-import { mapSectionContent, mapSections, mapSectionTwoColumns } from './map-sections'
+import { mapSectionContent, mapSections, mapSectionTwoColumns, mapTextGrid } from './map-sections'
 
 describe('map-sections', () => {
   it('should render section with no data', () => {
@@ -62,4 +62,43 @@ describe('map-sections', () => {
     expect(data.title).toBe('Pricing');
     expect(data.html).toBe('abc');
   })
+
+  it('should map grid text with data', () => {
+    const data = mapTextGrid({
+      __component: 'section.section-grid',
+      description: 'abc',
+      title: 'My Grid',
+      text_grid: [
+        {
+          title: 'Teste 1',
+          description: 'Coisa',
+        },
+        {
+          title: 'Teste 2',
+          description: 'abc',
+        },
+      ],
+      image_grid: [],
+      metadata: {
+        background: true,
+        section_id: 'grid-one',
+      },
+    });
+    expect(data.background).toBe(true);
+    expect(data.component).toBe('section.section-grid');
+    expect(data.sectionId).toBe('grid-one');
+    expect(data.title).toBe('My Grid');
+    expect(data.description).toBe('abc');
+    expect(data.grid[0].title).toBe('Teste 1');
+    expect(data.grid[0].description).toBe('Coisa');
+  });
+
+  it('should map grid text without data', () => {
+    const data = mapTextGrid(undefined);
+    expect(data.background).toBe(false);
+    expect(data.component).toBe('');
+    expect(data.sectionId).toBe('');
+    expect(data.title).toBe('');
+    expect(data.description).toBe('');
+  });
 })
