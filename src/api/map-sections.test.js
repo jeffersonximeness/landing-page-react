@@ -1,4 +1,4 @@
-import { mapSectionContent, mapSections, mapSectionTwoColumns, mapTextGrid } from './map-sections'
+import { mapSectionContent, mapSections, mapSectionTwoColumns, mapTextGrid, mapImageGrid } from './map-sections'
 
 describe('map-sections', () => {
   it('should render section with no data', () => {
@@ -65,7 +65,7 @@ describe('map-sections', () => {
 
   it('should map grid text with data', () => {
     const data = mapTextGrid({
-      __component: 'section.section-grid',
+      __component: 'section.section-grid-text',
       description: 'abc',
       title: 'My Grid',
       text_grid: [
@@ -83,22 +83,61 @@ describe('map-sections', () => {
         background: true,
         section_id: 'grid-one',
       },
-    });
+    })
+
     expect(data.background).toBe(true);
-    expect(data.component).toBe('section.section-grid');
+    expect(data.component).toBe('section.section-grid-text');
     expect(data.sectionId).toBe('grid-one');
     expect(data.title).toBe('My Grid');
     expect(data.description).toBe('abc');
     expect(data.grid[0].title).toBe('Teste 1');
     expect(data.grid[0].description).toBe('Coisa');
-  });
+  })
 
   it('should map grid text without data', () => {
     const data = mapTextGrid(undefined);
     expect(data.background).toBe(false);
-    expect(data.component).toBe('');
+    expect(data.component).toBe('section.section-grid-text');
     expect(data.sectionId).toBe('');
     expect(data.title).toBe('');
     expect(data.description).toBe('');
-  });
+  })
+
+  it('should map grid image', () => {
+    const data = mapImageGrid(undefined);
+    expect(data.background).toBe(false);
+    expect(data.component).toBe('section.section-grid-image');
+    expect(data.sectionId).toBe('');
+    expect(data.title).toBe('');
+    expect(data.description).toBe('');
+  })
+
+  it('should map grid image with data', () => {
+    const data = mapImageGrid({
+      __component: 'section.section-grid',
+      description: 'abc',
+      title: 'Gallery',
+      text_grid: [],
+      image_grid: [
+        {
+          image: {
+            alternativeText: 'abc',
+            url: 'a.svg',
+          },
+        },
+      ],
+      metadata: {
+        background: false,
+        name: 'gallery',
+        section_id: 'gallery',
+      },
+    })
+    expect(data.background).toBe(false);
+    expect(data.component).toBe('section.section-grid-image');
+    expect(data.sectionId).toBe('gallery');
+    expect(data.title).toBe('Gallery');
+    expect(data.description).toBe('abc');
+    expect(data.grid[0].srcImg).toBe('a.svg');
+    expect(data.grid[0].altText).toBe('abc');
+  })
 })
