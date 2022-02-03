@@ -6,7 +6,7 @@ describe('<Footer />', () => {
 
   it('should render', () => {
 
-    renderTheme(<Footer html={'<h1>Olá</h1>'} />)
+    renderTheme(<Footer footerHtml={'<h1>Olá</h1>'} />)
     expect(screen.getByRole('heading', { name: 'Olá' })).toBeInTheDocument()
   })
 })

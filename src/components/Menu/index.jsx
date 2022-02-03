@@ -8,7 +8,7 @@ import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu'
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 import { useState } from 'react'
 
-export const Menu = ({ links, logoData }) => {
+export const Menu = ({ links = [], logoData }) => {
 
   const [visible, setVisible] = useState(false)
 

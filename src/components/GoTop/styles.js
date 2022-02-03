@@ -12,7 +12,7 @@ export const Container = styled.a`
     height: 4rem;
     bottom: 2rem;
     right: 2rem;
-    z-index: 6;
+    z-index: 7;
     opacity: 0.7;
   `}
 `

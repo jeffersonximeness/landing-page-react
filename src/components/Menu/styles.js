@@ -14,8 +14,8 @@ export const Container = styled.div`
     z-index: 5;
     top: 0;
     left: 0;
-    bottom: 0;
     right: 0;
+    width: 100%;
     border-bottom: ${theme.colors.mediumGray};
     background: ${theme.colors.white};
     transition: all 300ms ease-in-out;
