@@ -12,11 +12,11 @@ export const mapSections = (sections = []) => {
     if (section.__component === 'section.section-grid') {
       const { text_grid = [], image_grid = [] } = section
 
-      if (text_grid.legnth > 0) {
+      if (text_grid != 0) {
         return mapTextGrid(section)
       }
 
-      if (image_grid.legnth > 0) {
+      if (image_grid != 0) {
         return mapImageGrid(section)
       }
     }
