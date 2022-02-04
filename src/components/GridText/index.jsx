@@ -5,11 +5,12 @@ import { Heading } from '../Heading'
 import { TextComponent } from '../TextComponent'
 
 
-export const GridText = ({ title, description, grid, background = false }) => {
+export const GridText = ({ title, description, grid, background = false, sectionId = '' }) => {
 
   return (
     <SectionBackground
       background={background}
+      sectionId={sectionId}
     >
       <Styled.Container>
         <Heading
@@ -55,5 +56,6 @@ GridText.propTypes = {
       title: P.string.isRequired,
       description: P.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  sectionId: P.string
 }
